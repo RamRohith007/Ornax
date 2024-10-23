@@ -1,0 +1,24 @@
+{% extends "webapp/base.html" %}
+
+{% block content %}
+<body>
+    <br><br> 
+    <div class="container" style="display: grid; grid-template-columns: 35% 1fr; gap: 5%;">
+        <div id="productpageimagediv">
+            <img id="productpageimage" src={{product.product_image_url}}>
+        </div>
+        <div id="productpagedescriptiondiv">
+            <h5>{{product.product_brand}}</h5>
+            <h3>{{product.product_name}}</h3>
+            <p>MFG: {{product.product_mfg_year}}</p>
+            <br>
+            <h3>₹{{product.product_price}}</h3>
+            <br>
+            <div class="container d-flex flex-wrap" id="productpagebuttons">
+                <a id="productpagewishlist" href="#" type="button" class="card-link btn btn-secondary w-50">Wishlist <i class="fa fa-heart-o" style="color:white"></i></a>
+                <a id="productpagebuynow" href="#" type="button" class="card-link btn btn-success w-50">Buy now <i class="fa fa-flash" style="color: white"></i></a>
+            </div>
+        </div>
+    </div>    
+</body>
+{% endblock content %}

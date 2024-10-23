@@ -1,0 +1,25 @@
+{% extends "webapp/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<body>
+    <br><br><br><br><br>
+    <div class="container bg-light shadow-md p-3 form-layout wrapper">
+        <h3>Ornax</h3>
+        <br>
+        <h4>Login to your account...</h4>
+        <hr>
+        <br>
+        <form method="POST" autocomplete="off">{% csrf_token %}
+        {{loginform.username|as_crispy_field}}
+        <br>
+        {{loginform.password|as_crispy_field}}
+        <br>
+        <button class="btn btn-primary w-100" type="sumbit">Login &nbsp;<i class="fa fa-key"></i></button>
+        </form>
+        <br>
+        <p class="text-center">Don't have an account? &nbsp;<a href={% url 'register' %}>Register</a></p>
+    </div>
+</body>
+{% endblock %}

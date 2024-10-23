@@ -1,0 +1,31 @@
+{% extends "webapp/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<body>
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <br>
+            <p><strong>&nbsp; <i class="fa fa-user-circle"></i>&nbsp; &nbsp; {{product.product_name}}</strong></p>
+            <hr>
+            <p><strong>&nbsp; ID: </strong>{{product.product_id}}</p>
+            <p><strong>&nbsp; Product Name: </strong>{{product.product_name}}</p>
+            <p><strong>&nbsp; Brand: </strong>{{product.product_brand}}</p>
+            <p><strong>&nbsp; Manufactured(Year): </strong>{{product.product_mfg_year}}</p>
+            <p><strong>&nbsp; Product Image: </strong>{{product.product_image_url}}</p>
+            <p><strong>&nbsp; Product Link: </strong>{{product.product_url}}</p>
+            <p><strong>&nbsp; Units(In Stock): </strong>{{product.product_stock}}</p>
+        </div>
+    </div>
+    <br>
+    <a href={% url 'updateproduct' product.id %} class="btn btn-info">Update Product Details&nbsp; <i class="fa fa-plus"></i></a>
+    &nbsp;
+    &nbsp;
+    <a href={% url 'deleteproduct' product.id %} class="btn btn-danger">Delete &nbsp;<i class="fa fa-remove"></i></i></a>
+    &nbsp;
+    &nbsp;
+    <a href={% url 'productdashboard' %} class="btn btn-secondary">Return &nbsp;<i class='fa fa-reply'></i></a>
+</body>
+{% endblock %}

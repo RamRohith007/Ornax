@@ -1,0 +1,39 @@
+{% extends "webapp/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<body>
+    <br>
+    <div class="container bg-light shadow-md p-3 form-layout">
+        <br>
+        <h4>Update the product details below...</h4>
+        <hr>
+        <form method="POST" autocomplete="off">{% csrf_token %}
+            {{updateproductform.product_id|as_crispy_field}}
+            <br>
+            {{updateproductform.product_name|as_crispy_field}}
+            <br>
+            {{updateproductform.product_brand|as_crispy_field}}
+            <br>
+            {{updateproductform.product_mfg_year|as_crispy_field}}
+            <br>
+            {{updateproductform.product_image_url|as_crispy_field}}
+            <br>
+            {{updateproductform.product_url|as_crispy_field}}
+            <br>
+            {{updateproductform.product_stock|as_crispy_field}}
+            <br>
+            {{updateproductform.product_price|as_crispy_field}}
+            <br>
+            {{updateproductform.product_description|as_crispy_field}}
+            <br>
+            <button class="btn btn-success" type="sumbit">Update Product Details &nbsp;<i class="fa fa-check"></i></button>
+            &nbsp;
+            <a href={% url 'productdashboard' %} class="btn btn-secondary">Return &nbsp;<i class='fa fa-reply'></i></a>
+            <br>
+            <br>
+        </form>
+    </div>
+</body>
+{% endblock %}

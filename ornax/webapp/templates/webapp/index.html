@@ -1,0 +1,31 @@
+{% extends "webapp/base.html" %}
+
+{% block content %}
+{% include "webapp/homecarousel.html" %}
+
+<div class="container">
+<br>
+<h4>Top Deals</h4>
+<hr>
+{% if products %}
+<div class="row row-cols-1 row-cols-md-5 g-4">
+{% for product in products%}
+<div class="col">
+  <div class="card h-100" style="width: 16rem;">
+    <a href={% url 'productpage' product.id %}><img src="{{product.product_image_url}}" class="card-img-top" alt="Oh Snap!" style="width: 100%; min-height:200px; height: 15vw; object-fit: contain;"></a>
+    <div class="card-body">
+      <a href={% url 'productpage' product.id %} id="productcardname"><h6 class="card-title text-truncate">{{product.product_name}}</h6></a>
+      <h5 class="card-text"><strong>₹{{product.product_price}}</strong></h5>
+      <div class="card-body" id="mainpagecardbody" style="text-align: center;">
+          <a id="wishlistbutton" href="#" type="button" class="card-link btn btn-secondary" style="display: inline-block; vertical-align: middle; white-space: nowrap;">Wishlist <i class="fa fa-heart" style="color:red"></i></a>
+          <a id="buynowbutton" href="#" type="button" class="card-link btn btn-primary" style="display: inline-block; vertical-align: middle; white-space: nowrap;">Buy now <i class="fa fa-flash" style="color: white"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+  {% endfor %}
+</div>
+{% endif %}
+</div>
+
+{% endblock content %}

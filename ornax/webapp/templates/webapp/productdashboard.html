@@ -1,0 +1,44 @@
+{% extends "webapp/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<body>
+    <br>
+        <br>
+        <h3>Welcome, {{user}}!</h3>
+    <hr>
+    <a href={% url 'addproduct' %} class="btn btn-outline-primary" style="color:#327edb">Create a new product &nbsp; <i class="fa fa-plus" style="color:#327edb"></i></a>
+    <hr>
+    <table class="table table-dark table-hover table-bordered">
+        <thead class="table-secondary">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Product ID</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Product Brand</th>
+                <th scope="col">Product MFG Year</th>
+                <th scope="col">Quantity in Stock</th>
+                <th scope="col">View</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if products %}
+            {% for product in products %}
+            <tr>
+                <td>{{product.id}}</td>
+                <td>{{product.product_id}}</td>
+                <td>{{product.product_name}}</td>
+                <td>{{product.product_brand}}</td>
+                <td>{{product.product_mfg_year}}</td>
+                <td>{{product.product_stock}}</td>
+                <td class="text-center">
+                    <a href={% url 'productdetails' product.id %}><i class="fa fa-eye" style="color:whitesmoke"></i></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+</body>
+{% endblock %}
